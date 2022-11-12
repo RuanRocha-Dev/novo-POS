@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css">
+    <title>Document</title>
+</head>
+
+<style>
+    *{
+        font-family: 'Montserrat';
+        color: #fff;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 130%;
+    }
+
+    :root {
+        --corPrimaria: #FFF;
+        --corSecundaria: #0465B2;
+    }
+
+    body{
+        background-color: black;
+    }
+
+    dialog::backdrop {
+        background-color: rgb(0 0 0 / .3);
+    }
+
+    dialog {
+        padding: 0;
+        border-radius: 15px;
+        border: none;
+    }
+
+    .cabecalho {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 10%;
+        background-color: var(--corSecundaria);
+        position: relative;
+    }
+
+    .cabecalho h1 {
+        font-size: 23px;
+    }
+
+    #btnModal {
+        position: absolute;
+        right: 4%;
+        top: 15%;
+        border-radius: 50%;
+        font-size: 30px;
+        cursor: pointer;
+    }
+
+    #conteudo {
+        position: relative;
+        background-color: var(--corPrimaria);
+    }
+
+    .inputData {
+        color: var(--corSecundaria);
+        width: 359px;
+        border: none;
+        border-bottom: 3px solid var(--corSecundaria);
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .inputData:focus {
+        box-shadow: 0 0 0 0;
+        outline: 0;
+    }
+
+    .inputData::-webkit-calendar-picker-indicator {
+        cursor: pointer;
+        color: var(--corSecundaria);
+        /* filter: invert(30%); */
+    }
+</style>
+
+<body>
+    <dialog>
+        <div class="cabecalho">
+            <h1> </h1>
+            <i id="btnModal" class="fa fa-circle-xmark"></i>
+        </div>
+        <div id="conteudo">  </div>
+    </dialog>
+
+    <button id="btn">Abrir modal</button>
+ 
+    <script src="/script.js"></script>
+</body>
+</html>
