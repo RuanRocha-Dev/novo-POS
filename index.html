@@ -6,15 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css">
     <title>Document</title>
 </head>
 
 <style>
     *{
         font-family: 'Montserrat';
-        color: #fff;
+        color: var(--corPrimaria);
         font-style: normal;
         font-weight: 700;
         line-height: 130%;
@@ -23,10 +23,19 @@
     :root {
         --corPrimaria: #FFF;
         --corSecundaria: #0465B2;
+        --corBotoes: #0465B2;
+    }
+
+    .darkModetoggle {
+        --corPrimaria: #8A8A8E;
+        --corSecundaria: #27242C;
+        --corBotoes: #3700B3;
     }
 
     body{
         background-color: black;
+        padding: 0;
+        margin: 0;
     }
 
     dialog::backdrop {
@@ -86,18 +95,270 @@
         color: var(--corSecundaria);
         /* filter: invert(30%); */
     }
+
+    #containerGeral {
+        width: 100vw;
+        height: 100vh;
+        background-color: gray;
+    }
+
+    .menuLateral {
+        width: 13%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        transition: .3s;
+        align-items: center;
+        background-color: var(--corSecundaria);
+    }
+
+    .headerMenu {
+        width: 100%;
+        height: 10%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+    .headerMenu i {
+        position: absolute;
+        top: 15%;
+        right: 6%;
+    }
+
+    .logoMenu {
+        width: 70%;
+        height: 50%;
+        background-color: black;        
+    }
+
+    .logoMenu img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .itensMenu {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        height: 75%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .itensMenu li {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .itensMenu li i {
+        margin-left: 5%;
+        font-size: 1.5rem;
+        transition: .3s;
+    }
+
+    .itensMenu li p {
+        margin-left: 10%;
+        white-space: nowrap;
+    }
+
+    .rodapeMenu {
+        width: 100%;
+        height: 15%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .darkMode {
+        width: 100%;
+        height: 45%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        transition: .3s;
+    }
+
+    .darkMode p {
+        font-weight: normal;
+        transition: .3s;
+    }
+
+    .darkMode i {
+        font-size: 1.3rem;
+        transition: .3s;
+    }
+
+    .switch {  /* começo estilo do toggle dark mode */ 
+        position: relative;
+        display: inline-block;
+        width: 48px;
+        height: 20px;
+    }
+
+    .switch input { 
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 15px;
+        width: 15px;
+        left: 3.5px;
+        bottom: 2.5px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+    input:checked + .slider {
+        background-color: #2196F3;
+    }
+
+    input:focus + .slider {
+        box-shadow: 0 0 1px #2196F3;
+    }
+
+    input:checked + .slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+    }
+
+    .slider.round {
+        border-radius: 34px;
+    }
+
+    .slider.round:before {  /* fim estilo do toggle dark mode */ 
+        border-radius: 50%;
+    }
+
+    .logOut {
+        width: 70%;
+        height: 40px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        border-radius: 8px;
+        border: none;
+        position: relative;
+        background-color: #FF0F0F8C;
+    }
+
+    .logOut i {
+        font-size: 1.3rem;
+        position: absolute;
+        left: 5%;
+    }
+
+    .iconeFechamentoMenu {
+        transition: .3s;
+    }
+
+    .fechaAbreMenu {
+        margin-left: -10%;
+    }
+
+    .inputAutoCadastro:focus{
+        outline: 0;
+        border-bottom: #0465B2;
+    }
 </style>
 
 <body>
-    <dialog>
-        <div class="cabecalho">
-            <h1> </h1>
-            <i id="btnModal" class="fa fa-circle-xmark"></i>
-        </div>
-        <div id="conteudo">  </div>
-    </dialog>
+    <main id="containerGeral">
+        <dialog>
+            <div id="divCabecalho" class="cabecalho">
+                <h1> </h1>
+                <i id="btnModal" class="fa fa-circle-xmark"></i>
+            </div>
+            <div id="conteudo">  </div>
+        </dialog>
+        <section class="menuLateral">
+            <div class="headerMenu">  <!-- cabeçalho do menu -->
+                <i class="fa fa-angle-double-left iconeFechamentoMenu" onclick="fechaAbreMenu()"></i>
+                <div class="logoMenu">
+                    <img src="https://www.publicitarioscriativos.com/wp-content/uploads/2021/03/Untitled-2-2.png" alt="">
+                </div>
+            </div>
+            <ul class="itensMenu"> <!-- itens e subitens do menu --> 
+                <li>
+                    <i class="fa fa-bell"></i>
+                    <p> Notificação </p>
+                </li>
+                <li>
+                    <i class="fa fa-envelope-open"></i>
+                    <p> Convite </p>
+                </li>
+                <li>
+                    <i class="fa fa-user-plus"></i>
+                    <p> Cadastro Rápido </p>
+                </li>
+                <li>
+                    <i class="fa fa-qrcode"></i>
+                    <p> Qr Code </p>
+                </li>
+                <li>
+                    <i class="fa fa-star"></i>
+                    <p> Resgatar Prêmios </p>
+                </li>
+                <li>
+                    <i class="fa fa-trophy"></i>
+                    <p> Resgatar Beneficios </p>
+                </li>
+                <li>
+                    <i class="fa fa-credit-card"></i>
+                    <p> Recarga Pré-Pago </p>
+                </li>
+                <li>
+                    <i class="fa fa-edit"></i>
+                    <p> Relatórios </p>
+                </li>
+            </ul>
+            <footer class="rodapeMenu"> <!-- rodapé e modo claro e escuro menu -->
+                <div class="darkMode">
+                    <i class="far fa-moon fa-sun"></i>
+                    <p> Modo Claro </p>
+                    <label class="switch">
+                        <input onclick="darkMode()" type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <button class="logOut">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <p>Sair</p>
+                </button>
+            </footer>
+        </section>
 
-    <button id="btn">Abrir modal</button>
+        <button style="position: absolute; left: 50%; top: 50%" id="btn">Abrir modal</button>
+    </main>
+
  
     <script src="/script.js"></script>
 </body>
