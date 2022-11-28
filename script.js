@@ -32640,14 +32640,14 @@ function chamarFuncao(funcao){
 
 
 function addProdutos () {
-    produtos.forEach(prod => {
-        console.log(prod)
-        const containerProdutos = document.querySelector('.containerProdutos');
-        containerProdutos.innerHTML += `<div class="produto">
-                                            <div class="imgProduto"> <img src="https://1.bp.blogspot.com/-y2bowoZ1pGQ/UXk0I1bXmEI/AAAAAAAAH5A/hqpAnZ5JeFg/s1600/AnaMaria+Acidente+5.jpg" alt=""> </div> 
-                                            <div class="divNomeProduto"> <p> ${prod.nome_produto} </p> </div>
-                                        </div>`
-    })
+      produtos.forEach(prod => {
+         console.log(prod)
+         const containerProdutos = document.querySelector('.containerProdutos');
+         containerProdutos.innerHTML += `<div class="produto">
+                                             <div class="imgProduto"> <img src="https://1.bp.blogspot.com/-y2bowoZ1pGQ/UXk0I1bXmEI/AAAAAAAAH5A/hqpAnZ5JeFg/s1600/AnaMaria+Acidente+5.jpg" alt=""> </div> 
+                                             <div class="divNomeProduto"> <p> ${prod.nome_produto} </p> </div>
+                                          </div>`
+      })
 }
 
 addProdutos()
