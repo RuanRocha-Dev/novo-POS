@@ -32661,13 +32661,24 @@ function addProduto (el) {
    // console.log(tbodyProdutos)
    tbodyProdutos.innerHTML += `<tr class="trProd">
                                  <td style="max-width: 105px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;"> ${descricao} </td>
-                                 <td style="text-align: right;"> 1 </td>
-                                 <td style="text-align: right;"> ${valorProd} </td>
-                                 <td style="text-align: right;"> ${valorProd} </td>
+                                 <td style="text-align: right; position: relative"><i onclick="somaValorQuantidade(this)" class="fa-solid fa-plus" style="left: 2rem;"></i> <span> 1 </span> <i class="fa-solid fa-minus" style="left: 4.4rem;"></i></td>
+                                 <td style="text-align: right;" id="valorProduto"> ${valorProd} </td>
+                                 <td style="text-align: right;" id="totalValorProduto"> ${valorProd} </td>
                               </tr>`
 
    const valorTotal = document.querySelector(".footerComanda span");
    valorTotal.innerHTML = Number(valorTotal.textContent) + Number(valorProd) 
+}
+
+function somaValorQuantidade (el) {
+   let quantidadeProduto = el.closest(".trProd").querySelector(".trProd span");
+   quantidadeProduto.innerHTML = Number(quantidadeProduto.textContent) + 1;
+
+   const valorUnitario = Number(el.closest(".trProd").querySelector("#valorProduto").textContent);
+   const valorTotalProdutos = el.closest(".trProd").querySelector("#totalValorProduto");
+   let valorTotal = valorUnitario * Number(quantidadeProduto.textContent);
+
+   valorTotalProdutos.innerHTML = valorTotal;
 }
 
 
