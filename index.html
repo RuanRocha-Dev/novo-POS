@@ -401,6 +401,7 @@
         justify-content: flex-start;
         align-items: center;
         background-color: var(--corSecundaria);
+        z-index: 15;
     }
 
     .headerIdentificacaoCliente h3 {
@@ -429,6 +430,7 @@
         display: flex;
         flex-direction: column;
         justify-content: space-around;
+        position: relative;
     }
 
     #identificarCliente {
@@ -577,8 +579,11 @@
     }
 
     #itensComanda{
-        margin-top: -65rem;
-        margin-left: 15px;
+        margin-top: 14rem;
+        margin-left: 14px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        height: 72%;
     }
 
     #footerNota button{
@@ -663,6 +668,7 @@
         margin-top: 15px;
         background-color: var(--corPrimaria);
         border-radius: 10px;
+        cursor: pointer;
     }
 
     .imgProduto {
@@ -704,6 +710,18 @@
         bottom: 0;
         background-color: var(--corSecundaria);
     } 
+
+    .trProd td{
+        color: var(--corSecundaria);
+    }
+
+    table, td {
+        font-size: 1rem;
+        font-weight: 500;
+        border-bottom: 2px solid var(--corSecundaria);
+        border-collapse: collapse;
+        padding: 15px;
+    }
 </style>
 
 <body>
@@ -852,12 +870,13 @@
                                         <th style="text-align: right; font-size: 10.19px; font-weight: 500;">Subtotal</th>
                                     </tr>
                                 </table>
+                                <tbody> </tbody>
                             </div>
                         </div>
                         <div class="footerComanda">
                             <button style="margin-left: 10px;" onclick="chamarFuncao('aplicarDesconto');"> APLICAR DESCONTO </button>
                             <button style="margin-left: 10px;" onclick="chamarFuncao('meioPagamento');"> FECHAR COMANDA </button>
-                            <p style="font-size: 10.95px; font-weight: 400; margin-left: 160px;">Total<span style="font-size: 21.12px; font-weight: 500; margin-left: 10px;"> R$ 0,00</span></p>
+                            <p style="font-size: 10.95px; font-weight: 400; margin-left: 160px;">Total<p style="font-size: 21.12px; font-weight: 500; margin-left: 10px;"> R$ <span> 0 </span> </p> </p>
                         </div>
                     </div>
                     <div id="footerNota" style="width: 100%; margin-top: 30px;">

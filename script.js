@@ -32639,18 +32639,37 @@ function chamarFuncao(funcao){
 }
 
 
-function addProdutos () {
+function mostraProdutos () {  
       produtos.forEach(prod => {
-         console.log(prod)
+         // console.log(prod)
          const containerProdutos = document.querySelector('.containerProdutos');
-         containerProdutos.innerHTML += `<div class="produto">
+         containerProdutos.innerHTML += `<div class="produto" id="${prod.idProduto}" onclick="addProduto(this)" value="${prod.preco_venda}" descricao="${prod.nome_produto}">
                                              <div class="imgProduto"> <img src="https://1.bp.blogspot.com/-y2bowoZ1pGQ/UXk0I1bXmEI/AAAAAAAAH5A/hqpAnZ5JeFg/s1600/AnaMaria+Acidente+5.jpg" alt=""> </div> 
                                              <div class="divNomeProduto"> <p> ${prod.nome_produto} </p> </div>
                                           </div>`
       })
 }
+mostraProdutos()
 
-addProdutos()
+function addProduto (el) {
+   const descricao = el.getAttribute('descricao');
+   const valorProd = el.getAttribute('value');
+   // console.log(descricao)
+   // console.log(valorProd)
+
+   const tbodyProdutos = document.querySelector("#itensComanda tbody");
+   // console.log(tbodyProdutos)
+   tbodyProdutos.innerHTML += `<tr class="trProd">
+                                 <td style="max-width: 105px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;"> ${descricao} </td>
+                                 <td style="text-align: right;"> 1 </td>
+                                 <td style="text-align: right;"> ${valorProd} </td>
+                                 <td style="text-align: right;"> ${valorProd} </td>
+                              </tr>`
+
+   const valorTotal = document.querySelector(".footerComanda span");
+   valorTotal.innerHTML = Number(valorTotal.textContent) + Number(valorProd) 
+}
+
 
 
 
