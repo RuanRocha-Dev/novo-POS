@@ -32543,47 +32543,49 @@ function modalSucesso (cont) {
 }
 
 function abreNotificacoes (backgroundContainer, tituloHeader, conteudoNotificacoes, classeIconeInformativo, corIconeInformativo) {
-    const containerMain = document.querySelector('#containerGeral');
+   const containerMain = document.querySelector('#containerGeral');
 
-    const divContainer = document.createElement('div');  //criação dos elementos
-    const header = document.createElement('div'); 
-    const conteudo = document.createElement('div');
+   const divContainer = document.createElement('div');  //criação dos elementos
+   const header = document.createElement('div'); 
+   const conteudo = document.createElement('div');
 
-    const titulo = document.createElement('h3'); 
-    const iconeFechar = document.createElement('i'); 
+   const titulo = document.createElement('h3'); 
+   const iconeFechar = document.createElement('i'); 
 
-    const textoConteudo = document.createElement('p');
+   const textoConteudo = document.createElement('p');
 
-    const iconeinformativo = document.createElement('i');
+   const iconeinformativo = document.createElement('i');
 
-    containerMain.appendChild(divContainer);
+   containerMain.appendChild(divContainer);
 
-    divContainer.appendChild(header);
-    divContainer.appendChild(conteudo);
-    divContainer.appendChild(iconeinformativo);
-    divContainer.classList.add('containerNotificacoes');
-    divContainer.style = `background-color: ${backgroundContainer}`
+   divContainer.appendChild(header);
+   divContainer.appendChild(conteudo);
+   divContainer.appendChild(iconeinformativo);
+   divContainer.classList.add('containerNotificacoes');
+   divContainer.style = `background-color: ${backgroundContainer}; z-index: 999`
 
-    header.appendChild(titulo);                 // aplicação de estilo e inserção dos elementos filhos
-    header.appendChild(iconeFechar);
-    header.classList.add('headerNotificacoes');
+   header.appendChild(titulo);                 // aplicação de estilo e inserção dos elementos filhos
+   header.appendChild(iconeFechar);
+   header.classList.add('headerNotificacoes');
 
-    titulo.innerHTML = `${tituloHeader}`;
-    titulo.style = 'color: black'
+   titulo.innerHTML = `${tituloHeader}`;
+   titulo.style = 'color: black'
 
-    iconeFechar.classList.add('fa', 'fa-x');         
-    iconeFechar.style = 'color: black; cursor: pointer';
+   iconeFechar.classList.add('fa', 'fa-x');         
+   iconeFechar.style = 'color: black; cursor: pointer';
 
-    conteudo.appendChild(textoConteudo);
-    conteudo.classList.add('conteudoNotificacoes');
+   conteudo.appendChild(textoConteudo);
+   conteudo.classList.add('conteudoNotificacoes');
 
-    textoConteudo.innerHTML = `${conteudoNotificacoes}`;
-    textoConteudo.style = 'font-weight: 400; color: black';
+   textoConteudo.innerHTML = `${conteudoNotificacoes}`;
+   textoConteudo.style = 'font-weight: 400; color: black';
 
-    iconeinformativo.classList.add('fa', `${classeIconeInformativo}`);
-    iconeinformativo.style = `position: absolute; font-size: 1.7rem; top: 7%; left: 10%; color: ${corIconeInformativo};`
+   iconeinformativo.classList.add('fa', `${classeIconeInformativo}`);
+   iconeinformativo.style = `position: absolute; font-size: 1.7rem; top: 7%; left: 10%; color: ${corIconeInformativo};`
 
     iconeFechar.addEventListener('click', () => divContainer.remove()) // função apaar fechar o modal
+
+   setTimeout(() => divContainer.remove(), 3500);
 }
 // const senhaIncorreta = `O portador digitou a senha errrada,</br> informe a senha e tente novamente!`;    /*  chamando modal de SENHA INCORRETA */
 // abreNotificacoes('#F7E4E4', 'Senha Incorreta', senhaIncorreta, 'fa-times-circle', '#FF0F0F');
@@ -32608,42 +32610,42 @@ function escondeSaldo (el) {
 //** AQUI VAI TER QUE PASSAR OS VALORES QUE AS RESPECTIVAS TELAS ESTÃO ESPERANDO, EX VALOR DA COMANDA PRA IR PRO MEIO DE PAGAMENTO, OU VALOR DA RECARGA PRE PAGO, ETC.
 
 function chamarFuncao(funcao){
-    switch (funcao) {
-        case 'cadastroRapido':
+      switch (funcao) {
+         case 'cadastroRapido':
             autoCadastro(cadastroRapido);
             break;
 
-        case 'qrCode':
+         case 'qrCode':
             abreModal('QR Code', qrCode, 5, 'Fechar', false);
             break;
-    
-        case 'resgatePremio':
+
+         case 'resgatePremio':
             abreModal('Resgatar Prêmios', resgatePremio, 7, 'CANCELAR', false);
             break;
-    
-        case 'recargaPrePago':
+
+         case 'recargaPrePago':
             abreModal('Selecione o tipo de senha', selecioneTipoSenha, 4)
             break;
-    
-        case 'meioPagamento':
+
+         case 'meioPagamento':
             abreModal('Meio de Pagamento', meioDePagamento, 1, 'CONCLUIR', true);
             break;
-    
-        case 'aplicarDesconto':
+
+         case 'aplicarDesconto':
             abreModal('Desconto', selecioneDesconto, 6, 'CONCLUIR', true);
             break;
-    
-        default:
+
+         default:
             break;
-    }
+   }
 }
 
 
-function mostraProdutos () {  
+function mostraProdutos () {   // função que mostra os produtos disponiveis para compra
       produtos.forEach(prod => {
          // console.log(prod)
          const containerProdutos = document.querySelector('.containerProdutos');
-         containerProdutos.innerHTML += `<div class="produto" id="${prod.idProduto}" onclick="addProduto(this)" value="${prod.preco_venda}" descricao="${prod.nome_produto}">
+         containerProdutos.innerHTML += `<div class="produto" id="${prod.idProduto}" onclick="addProduto(this, ${prod.idProduto}, ${prod.estoque_atual})" value="${prod.preco_venda}" descricao="${prod.nome_produto}" estoqueProd="${prod.estoque_atual}">
                                              <div class="imgProduto"> <img src="https://1.bp.blogspot.com/-y2bowoZ1pGQ/UXk0I1bXmEI/AAAAAAAAH5A/hqpAnZ5JeFg/s1600/AnaMaria+Acidente+5.jpg" alt=""> </div> 
                                              <div class="divNomeProduto"> <p> ${prod.nome_produto} </p> </div>
                                           </div>`
@@ -32651,27 +32653,39 @@ function mostraProdutos () {
 }
 mostraProdutos()
 
-function addProduto (el) {
+idsProdutosInseridos = [];
+
+function addProduto (el, id, estoque) { // função que adiciona o produto no 'carrinho' na div central NOTA/CUPOM
+   if (idsProdutosInseridos.includes(id)) {
+      const elemento = document.querySelector(`#itensComanda #item${id}`);
+      somaValorQuantidade(elemento, estoque);
+      return false;
+   }
+
+   idsProdutosInseridos.push(id)
+
    const descricao = el.getAttribute('descricao');
    const valorProd = el.getAttribute('value');
-   // console.log(descricao)
-   // console.log(valorProd)
 
    const tbodyProdutos = document.querySelector("#itensComanda tbody");
-   // console.log(tbodyProdutos)
    tbodyProdutos.innerHTML += `<tr class="trProd">
                                  <td style="max-width: 105px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;"> ${descricao} </td>
-                                 <td style="text-align: right; position: relative"><i onclick="somaValorQuantidade(this)" class="fa-solid fa-plus" style="left: 2rem;"></i> <span> 1 </span> <i class="fa-solid fa-minus" style="left: 4.4rem;"></i></td>
+                                 <td style="text-align: right; position: relative"><i onclick="somaValorQuantidade(this, ${estoque})" class="fa-solid fa-plus" style="left: 2rem;"></i> <span id="item${id}"> 1 </span> <i onclick="subtraiValorQuantidade(this, ${id}, ${estoque})" class="fa-solid fa-minus" style="left: 4.4rem;"></i></td>
                                  <td style="text-align: right;" id="valorProduto"> ${valorProd} </td>
                                  <td style="text-align: right;" id="totalValorProduto"> ${valorProd} </td>
                               </tr>`
 
    const valorTotal = document.querySelector(".footerComanda span");
-   valorTotal.innerHTML = Number(valorTotal.textContent) + Number(valorProd) 
+   valorTotal.innerHTML = Number(valorTotal.textContent) + Number(valorProd); 
 }
 
-function somaValorQuantidade (el) {
+function somaValorQuantidade (el, estoque) {  // função que soma no campo 'SUBTOTAL', ao clicar em adicionar mais unidades do mesmo produto somara no subtotal
    let quantidadeProduto = el.closest(".trProd").querySelector(".trProd span");
+   if(Number(quantidadeProduto.textContent) >= estoque) {
+      abreNotificacoes('#F7F2E4', 'Atenção', 'Produto sem estoque', 'fa-exclamation-triangle', '#F9C132');
+      return false;
+   }
+
    quantidadeProduto.innerHTML = Number(quantidadeProduto.textContent) + 1;
 
    const valorUnitario = Number(el.closest(".trProd").querySelector("#valorProduto").textContent);
@@ -32679,6 +32693,34 @@ function somaValorQuantidade (el) {
    let valorTotal = valorUnitario * Number(quantidadeProduto.textContent);
 
    valorTotalProdutos.innerHTML = valorTotal;
+
+   const total = document.querySelector(".footerComanda span");
+   let totalAtual = Number(total.textContent) + valorUnitario;
+   total.innerHTML = totalAtual;
+}
+
+function subtraiValorQuantidade (el, id, estoque) {  // tem a mesma premissa que a função 'somaValorQuantidade' só que subtrai do valor
+   let quantidadeProduto = el.closest(".trProd").querySelector(".trProd span");
+   const total = document.querySelector(".footerComanda span");
+
+   if (Number(quantidadeProduto.textContent) <= 1) {
+      let removido = idsProdutosInseridos.indexOf(id);
+      idsProdutosInseridos.splice(removido, 1);
+      el.closest(".trProd").remove();
+      return false;
+   }
+
+   quantidadeProduto.innerHTML = Number(quantidadeProduto.textContent) - 1;
+
+   const valorUnitario = Number(el.closest(".trProd").querySelector("#valorProduto").textContent);
+   const valorTotalProdutos = el.closest(".trProd").querySelector("#totalValorProduto");
+   let valorTotal = Number(valorTotalProdutos.textContent) - valorUnitario;
+
+   valorTotalProdutos.innerHTML = valorTotal;
+
+   
+   let totalAtual = Number(total.textContent) - valorUnitario;
+   total.innerHTML = totalAtual;
 }
 
 
